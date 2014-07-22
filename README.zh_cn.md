@@ -19,4 +19,25 @@ log.error 'hello'
 log.warn 'hello'
 log.info 'hello'
 ```
-
+config
+```js
+{
+  //是否在控制台输出.如果不需要在控制台输出则设置 log2console:false
+  //如果只想显示特定类型的消息在控制台,设置为true即可
+  //消息类型分别 debug, info, warn, error,需要什么就设置true
+  "log2console": {
+     "debug": false,
+     "info": true,
+     "warn": true,
+     "error": true
+  }
+  //是否显示时间戳. 不显示使timestamp:false. 时间格式 请参考 http://momentjs.com/docs
+  "timestamp": {
+    "format": "YYYY-MM-DD "
+  },
+  //消息级别的标签是否显示
+  "levelShow": true,
+  //是否显示输出日志的文件信息和代码行数
+  "lineInfo": true
+}
+```

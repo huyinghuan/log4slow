@@ -19,7 +19,9 @@
     },
     "dependencies": {
         "coffee-script":"",
-        "colors": ""
+        "colors": "",
+        "mkdirp": "",
+        "moment": ""
     },
     "scripts": {
         "prepublish": "coffee -o lib/ -c src/",
