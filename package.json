@@ -3,6 +3,7 @@
     "version": "0.0.1",
     "description": "log to file or console, support .log or .html",
     "keywords": ["logs", "slow", "slow-cli"],
+    "author": "huyinghuan",
     "homepage": "https://github.com/huyinghuan/log4slow",
     "bugs": {
         "url": "https://github.com/huyinghuan/log4slow/issues",
@@ -21,7 +22,9 @@
         "colors": ""
     },
     "scripts": {
-        "prepublish": "coffee --compile --output src/ lib/",
+        "prepublish": "coffee -o lib/ -c src/",
+        "prestart": "coffee -o lib/ -c src/",
+        "pretest": "coffee -o lib/ -c src/",
         "test": "node lib/test.js"
     },
     "main": "lib/log.js"
