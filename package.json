@@ -1,0 +1,28 @@
+{
+    "name": "log4slow",
+    "version": "0.0.1",
+    "description": "log to file or console, support .log or .html",
+    "keywords": ["logs", "slow", "slow-cli"],
+    "homepage": "https://github.com/huyinghuan/log4slow",
+    "bugs": {
+        "url": "https://github.com/huyinghuan/log4slow/issues",
+        "email": "ec.huyinghuan@gmail.com"
+    },
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/huyinghuan/log4slow.git"
+    },
+    "engines": {
+        "node" : ">=0.10"
+    },
+    "dependencies": {
+        "coffee-script":"",
+        "colors": ""
+    },
+    "scripts": {
+        "prepublish": "coffee --compile --output src/ lib/",
+        "test": "node lib/test.js"
+    },
+    "main": "lib/log.js"
+}
