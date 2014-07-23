@@ -1,7 +1,9 @@
 _colors = require 'colors'
 _config = require './config.json'
 _moment = require 'moment'
+logfile = require './file'
 
+#控制台颜色配置
 _colors.setTheme
   info: 'green'
   help: 'cyan'
@@ -12,7 +14,7 @@ _colors.setTheme
 #是否支持错误堆栈信息
 isSupport = (()->
   err = new Error()
-  return console.log "Node版本不支持slow4js / The version of node  do not support slow4js".warn if not err.stack
+  return console.log "The version of node  do not support slow4js".warn if not err.stack
   return true
 )()
 
@@ -28,15 +30,10 @@ getFileAndLine = ()->
   return fileInfo.replace cwd, '' if fileInfo = info.match(reg)[0]
   return ''
 
-setConfig = (custom)->
-  return _config if not custom
-  _config[property] = custom[property] for property of custom
-  return _config
-
-
+#合成日志内容
 format = (lineInfo, content, type)->
   loginfo = []
-  loginfo.push _moment().format(_config.timestamp.format) if _config.timestamp
+  loginfo.push _moment().format(_config.timestamp) if _config.timestamp
   loginfo.push lineInfo if _config.lineInfo
   loginfo.push "[#{type.toUpperCase()}]" if _config.levelShow
   loginfo.push content
@@ -44,6 +41,14 @@ format = (lineInfo, content, type)->
 
 output2Console = (content, type)->
   console.log content[type] if _config.log2console and _config.log2console[type]
+
+output2file = (content, type)->
+
+init = (custom)->
+  return _config if not custom
+  _config[property] = custom[property] for property of custom
+  logfile.init _config
+  return _config
 
 Log = {}
 
@@ -58,5 +63,6 @@ Log.warn = factory 'warn'
 Log.error = factory 'error'
 Log.info = factory 'info'
 Log.debug = factory 'debug'
+Log.init = init
 
 module.exports = Log

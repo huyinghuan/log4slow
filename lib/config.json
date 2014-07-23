@@ -5,9 +5,16 @@
     "warn": true,
     "error": true
   },
-  "timestamp": {
-    "format": "YYYY-MM-DD hh:mm:ss"
-  },
+  "timestamp": "YYYY-MM-DD hh:mm:ss",
   "levelShow": true,
-  "lineInfo": true
+  "lineInfo": true,
+  "log2file":{
+    "debug": true,
+    "info": true,
+    "warn": true,
+    "error": true
+  },
+  "dirRoot": false,
+  "dirs": ["logs", "$YYYY", "$MM", "hello"],
+  "filename":"$DD HH"
 }
