@@ -5,7 +5,7 @@
     "warn": true,
     "error": true
   },
-  "timestamp": "YYYY-MM-DD hh:mm:ss",
+  "timestamp": "YYYY-MM-DD HH:mm:ss",
   "levelShow": true,
   "lineInfo": true,
   "log2file":{
@@ -15,6 +15,11 @@
     "error": true
   },
   "dirRoot": false,
-  "dirs": ["logs", "$YYYY", "$MM", "hello"],
-  "filename":"$DD HH"
+  "dirs": ["logs", "$YYYY", "$MM", ":type"],
+  "default_dir": "logs",
+  "filename":"$MMDD",
+  "levelfile": {
+    "error": true
+  },
+  "filesize": "2 MB"
 }

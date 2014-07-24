@@ -5,8 +5,4 @@ test = ->
   Log.debug "this is success"
   Log.warn "this is warn"
   Log.info "this is info"
-
-create = ->
-  logfile.createDir()
-
-create()
+test()

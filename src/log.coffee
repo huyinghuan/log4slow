@@ -22,19 +22,18 @@ isSupport = (()->
 getFileAndLine = ()->
   return '' if not isSupport
   stack = new Error().stack
-  #console.log , __dirname, process.cwd()
-  info = stack.split('\n')[3]
+  info = stack.split('\n')[4]
   cwd = process.cwd()
   return '' if not info
-  reg = new RegExp("#{cwd}([^:])+:\\d", "g")
+  reg = new RegExp("#{cwd}([^:])+:(\\d)+", "g")
   return fileInfo.replace cwd, '' if fileInfo = info.match(reg)[0]
   return ''
 
 #合成日志内容
-format = (lineInfo, content, type)->
+format = (content, type)->
   loginfo = []
   loginfo.push _moment().format(_config.timestamp) if _config.timestamp
-  loginfo.push lineInfo if _config.lineInfo
+  loginfo.push getFileAndLine() if _config.lineInfo
   loginfo.push "[#{type.toUpperCase()}]" if _config.levelShow
   loginfo.push content
   loginfo.join ' '
@@ -43,6 +42,7 @@ output2Console = (content, type)->
   console.log content[type] if _config.log2console and _config.log2console[type]
 
 output2file = (content, type)->
+  logfile content, type if _config.log2file and _config.log2file[type]
 
 init = (custom)->
   return _config if not custom
@@ -54,10 +54,10 @@ Log = {}
 
 factory = (type)->
   (content)->
-    lineinfo =  getFileAndLine()
     return if not content
-    content = format(lineinfo, content, type)
+    content = format(content, type)
     output2Console(content, type)
+    output2file(content, type)
 
 Log.warn = factory 'warn'
 Log.error = factory 'error'
