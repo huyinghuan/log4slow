@@ -1,6 +1,6 @@
 {
     "name": "log4slow",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "log to file or console, support .log or .html",
     "keywords": ["log", "logger", "log2file"],
     "author": "huyinghuan",
