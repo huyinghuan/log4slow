@@ -31,9 +31,16 @@ getFileAndLine = ()->
   return fileInfo.replace cwd, '' if fileInfo = info.match(reg)[0]
   return ''
 
+#根据不同数据类型 string, json object, error 获取格式良好的显示的信息
+getContentFromDataType = (content)->
+  return content.stack if content instanceof Error
+  return JSON.stringify content if content instanceof Object or content instanceof Array
+  return "#{content}"
+
 #合成日志内容
 format = (content, type)->
   loginfo = []
+  content = getContentFromDataType content
   loginfo.push _moment().format(_config.timestamp) if _config.timestamp
   loginfo.push getFileAndLine() if _config.lineInfo
   loginfo.push "[#{type.toUpperCase()}]" if _config.levelShow

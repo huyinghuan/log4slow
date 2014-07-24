@@ -2,7 +2,7 @@
     "name": "log4slow",
     "version": "0.0.3",
     "description": "log to file or console, support .log or .html",
-    "keywords": ["logs", "slow", "slow-cli"],
+    "keywords": ["log", "logger", "log2file"],
     "author": "huyinghuan",
     "homepage": "https://github.com/huyinghuan/log4slow",
     "bugs": {

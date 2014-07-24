@@ -1,7 +1,8 @@
 Log = require "./log"
 test = ->
-  Log.error "this is error"
-  Log.debug "this is success"
-  Log.warn "this is warn"
-  Log.info "this is info"
+  Log.info 'hello'
+  Log.error new Error('hello')
+  Log.warn {a: 1, b: 2}
+  Log.debug [1, 2, 3, 4]
+  Log.info [1, 2, 3, 4]
 test()

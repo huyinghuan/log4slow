@@ -13,12 +13,12 @@ npm install log4slow
 
 ### 使用
 ```coffeescript
-log =   require 'log4slow'
+Log = require('log4slow')
 
-log.info 'hello'
-log.error 'hello'
-log.warn 'hello'
-log.info 'hello'
+Log.info('hello')
+Log.error(new Error('hello'))
+Log.warn({a: 1, b: 2})
+Log.info([1, 2, 3, 4])
 ```
 ### config 配置
 
@@ -76,6 +76,9 @@ log.info 'hello'
   需要进行特殊配置时，可以使用Log.init(options) 进行覆盖设置
   options： JSON object
     具体字段请参考 上面的config部分
+
+#### info, warn, error, debug
+ 参数类型可以为JSON object对象， 常量， Error 对象
 
 #### Test
 
