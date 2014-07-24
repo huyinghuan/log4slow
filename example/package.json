@@ -1,0 +1,11 @@
+{
+    "name": "log4slow-test",
+    "version": "0.0.1",
+    "dependencies": {
+       "log4slow": ""
+    },
+    "scripts": {
+        "test": "node test.js"
+    },
+    "main": "test.js"
+}
