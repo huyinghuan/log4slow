@@ -1,6 +1,8 @@
 _colors = require 'colors'
 _config = require './config.json'
 _moment = require 'moment'
+_fs = require 'fs'
+_path = require 'path'
 logfile = require './file'
 
 #控制台颜色配置
@@ -44,16 +46,9 @@ output2Console = (content, type)->
 
 output2file = (content, type)->
   return if not _config.log2file
-  logfile content, type if _config.log2file is true or _config.log2file[type]
+  logfile.output content, type if _config.log2file is true or _config.log2file[type]
 
-init = (custom)->
-  return _config if not custom
-  _config[property] = custom[property] for property of custom
-  logfile.init _config
-  return _config
-
-Log = {}
-
+#生成各种类型的消息
 factory = (type)->
   (content)->
     return if not content
@@ -61,10 +56,28 @@ factory = (type)->
     output2Console(content, type)
     output2file(content, type)
 
-Log.warn = factory 'warn'
-Log.error = factory 'error'
-Log.info = factory 'info'
-Log.debug = factory 'debug'
-Log.init = init
+#浅继承 仅继承第一层属性
+extend = (src, dist)->
+  return src if not dist
+  src[property] = dist[property] for property of dist
+  return src
 
-module.exports = Log
+class Log
+  constructor: ()->
+    default_config = _path.join process.cwd(), 'log4slow.json'
+    if _fs.existsSync(default_config) and _fs.statSync(default_config).isFile()
+      _config = extend _config, require default_config
+      logfile.init _config
+  init: (options)->
+    _config = extend(_config, options)
+    logfile.init _config
+
+  warn: factory 'warn'
+
+  error: factory 'error'
+
+  info: factory 'info'
+
+  debug: factory 'debug'
+
+module.exports = new Log()

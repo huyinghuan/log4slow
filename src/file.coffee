@@ -1,12 +1,11 @@
-_config = require './config.json'
 _mkdirp = require 'mkdirp'
 _moment = require 'moment'
 _path = require 'path'
 _fs = require 'fs'
-Log2File = {}
 
-Log2File.init = (config)->
-  _config = config
+_config = {}
+
+
 
 cwd = process.cwd()
 
@@ -45,4 +44,10 @@ output2file = (content, type)->
   _fs.appendFile filename, "#{content}\n", (err)->
     console.error err if err
 
-module.exports = output2file
+class Log2File
+  construction: ()->
+  init: (config)->
+    _config = config
+  output: output2file
+
+module.exports = new Log2File()

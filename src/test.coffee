@@ -1,5 +1,4 @@
 Log = require "./log"
-logfile = require "./file"
 test = ->
   Log.error "this is error"
   Log.debug "this is success"

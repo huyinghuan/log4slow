@@ -1,6 +1,6 @@
 {
   "log2console": {
-    "debug": true,
+    "debug": false,
     "info": true,
     "warn": true,
     "error": true
@@ -9,7 +9,7 @@
   "levelShow": true,
   "lineInfo": true,
   "log2file": {
-    "debug": true,
+    "debug": false,
     "info": true,
     "warn": true,
     "error": true
@@ -18,7 +18,5 @@
   "dirs": ["logs", "$YYYY", "$MM", ":type"],
   "default_dir": "logs",
   "filename":"$MMDD",
-  "levelfile": {
-    "error": true
-  }
+  "levelfile": false
 }

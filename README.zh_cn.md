@@ -66,9 +66,36 @@ log.info 'hello'
       "info": true,
       "warn": true,
       "error": true
-   },
-   //设置每个日志文件的大小， 支持单位 KB, MB, GB. 默认单位是MB. 若不需要分割，则设置为false即可。
-   //数字或数组.  数组时，下标为0的表示大小，下标为1的表示单位。
-   "filesize": [2, "MB"] //默认值为false
+   }
+}
+```
+
+### Others Methos
+
+#### init
+  需要进行特殊配置时，可以使用Log.init(options) 进行覆盖设置
+  options： JSON object
+    具体字段请参考 上面的config部分
+
+#### Test
+
+```shell
+  npm test
+```
+
+#### Default Config
+
+```
+{
+  "log2console": true, #打印到控制台
+  "timestamp": "YYYY-MM-DD HH:mm:ss", #时间格式化
+  "levelShow": true,  #显示消息等级
+  "lineInfo": true,   #显示文件名称和代码行数
+  "log2file": true,   #进行文件记录
+  "dirRoot": false,   #根目录为应用更目录
+  "dirs": false,  #使用默认文件夹
+  "default_dir": "logs", #默认文件夹名称
+  "filename": "$YYYYMMDD", #文件名格式化为20130723
+  "levelfile": false  #不进行类别区分文件夹
 }
 ```
