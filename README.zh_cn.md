@@ -29,15 +29,11 @@ log.info 'hello'
 ```js
 {
   //是否在控制台输出.如果不需要在控制台输出则设置 log2console:false
-  //如果只想显示特定类型的消息在控制台,设置为true即可
-  //消息类型分别 debug, info, warn, error,需要什么就设置true
-  //
-  "log2console": {
-     "debug": true,  //默认值true
-     "info": true,  //默认值true
-     "warn": true,  //默认值true
-     "error": true  //默认值true
-  }
+  //如果只想显示特定类型的消息在控制台,设置相关类型为true即可
+  //消息类型分别 debug, info, warn, error,需要什么就设置true 如 log2console:{error:true}
+  //如果需要全部都显示，则设置 log2console:true
+  "log2console": true; //默认值true。 全部显示
+
   //是否显示时间戳. 不显示使timestamp:false. 时间格式 请参考 http://momentjs.com/docs
   "timestamp": "YYYY-MM-DD HH:mm:ss",  //默认值 "YYYY-MM-DD HH:mm:ss"
   //消息级别的标签是否显示
@@ -45,7 +41,8 @@ log.info 'hello'
   //是否显示输出日志的文件信息和代码行数
   "lineInfo": true, //默认值 true
   //设置日志是否保持到日志，已经保存日志的类型。
-  //例如 要保持error信息，只需设置error为true即可。若不需要记录日志到文件使 log2file: false 即可
+  //例如 保持所有信息设置log2file:true, 仅要保持error信息，只需设置log2file:{error:true}即可。
+  //若不需要记录日志到文件使 log2file: false 即可
   "log2file":{  //默认值 false 不记录到文件。如需记录到文件请进行相关设置
       "debug": true,
       "info": true,

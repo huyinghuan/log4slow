@@ -20,8 +20,9 @@ getDirsArr = (type)->
   #是否配置绝对路径
   dirs = if _config.dirRoot and typeof _config.dirRoot is 'string' then [_config.dirRoot] else [cwd]
   #是否使用默认至
-  return dirs.push _config.default_dir if not _config.dirs or not _config.dirs.length
-
+  if not _config.dirs or not _config.dirs.length
+    dirs.push _config.default_dir
+    return dirs
   if typeof _config.dirs is 'string'
     dirs.push _config.dirs
     return dirs

@@ -1,25 +1,12 @@
 {
-  "log2console": {
-    "debug": true,
-    "info": true,
-    "warn": true,
-    "error": true
-  },
+  "log2console": true,
   "timestamp": "YYYY-MM-DD HH:mm:ss",
   "levelShow": true,
   "lineInfo": true,
-  "log2file":{
-    "debug": true,
-    "info": true,
-    "warn": true,
-    "error": true
-  },
+  "log2file": true,
   "dirRoot": false,
-  "dirs": ["logs", "$YYYY", "$MM", ":type"],
+  "dirs": false,
   "default_dir": "logs",
-  "filename":"$MMDD",
-  "levelfile": {
-    "error": true
-  },
-  "filesize": "2 MB"
+  "filename": "$YYYYMMDD",
+  "levelfile": false
 }

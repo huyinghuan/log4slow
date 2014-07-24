@@ -39,10 +39,12 @@ format = (content, type)->
   loginfo.join ' '
 
 output2Console = (content, type)->
-  console.log content[type] if _config.log2console and _config.log2console[type]
+  return if not _config.log2console
+  console.log content[type] if _config.log2console is true or _config.log2console[type]
 
 output2file = (content, type)->
-  logfile content, type if _config.log2file and _config.log2file[type]
+  return if not _config.log2file
+  logfile content, type if _config.log2file is true or _config.log2file[type]
 
 init = (custom)->
   return _config if not custom
