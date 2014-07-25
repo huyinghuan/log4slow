@@ -42,7 +42,7 @@ format = (content, type)->
   loginfo = []
   content = getContentFromDataType content
   loginfo.push _moment().format(_config.timestamp) if _config.timestamp
-  loginfo.push getFileAndLine() if _config.lineInfo
+  loginfo.push getFileAndLine() if _config.lineInfo is true or _config.lineInfo[type]
   loginfo.push "[#{type.toUpperCase()}]" if _config.levelShow
   loginfo.push content
   loginfo.join ' '
