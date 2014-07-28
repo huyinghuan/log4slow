@@ -75,7 +75,7 @@ In the default, read the configure ```appRoot/log4slow.json```, if it isn't exis
   */
   "lineInfo": {
     "error": true,
-    "debug": true, //由于一般生产环境不会记录debug类型到文件或者控制，所以这里可以设置为true
+    "debug": true,
   }, 
 
   /*
@@ -113,7 +113,7 @@ In the default, read the configure ```appRoot/log4slow.json```, if it isn't exis
    * it will be format to time if begin with '$'
    * the following option will be format 20140725
    */
-   "filename":"$YYYYMMDD",  //默认值 $YYYMMDD
+   "filename":"$YYYYMMDD",
 
    /*
    * Do separately save log file accord log type ?  Boolean or Object . default: false
