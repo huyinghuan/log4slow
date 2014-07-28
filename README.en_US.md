@@ -23,7 +23,7 @@
 
 ## test
 
-```
+```shell
   cd log4slow
   npm test
 ```
@@ -31,7 +31,7 @@
 
 ## example
 
-```
+```shell
  cd log4slow/example
 ```
 
@@ -39,7 +39,7 @@
 
 In the default, read the configure ```appRoot/log4slow.json```, if it isn't exists, will use ```log4slow's default configure```
 
-```
+```javascript
 {
   /*
   * Do output to console ?  Boolean or Object    
@@ -158,7 +158,7 @@ Accept JSON Object, Error Object , and string,number ...
 ### init
 Accept JSON Object as configure. will replace default configure's property
 
-```
+```js
 Log.init(configObject)
 ```
 
