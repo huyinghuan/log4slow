@@ -120,7 +120,7 @@ In the default, read the configure ```appRoot/log4slow.json```, if it isn't exis
    * if error is true:
    *    the log file will be   [app-root|absolute path]/[dirs]/error
    */
-   "levelfile": { //默认值为false
+   "levelfile": {
       "error": true,
       "info": true,
       "warn": true,
