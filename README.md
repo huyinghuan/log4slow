@@ -50,45 +50,55 @@ In the default, read the configure ```appRoot/log4slow.json```, if it isn't exis
 ```
 {
   /*
-  * Do output to console ?  Boolean or Object     default: true
-  * if show all set log2console: true,  otherwise, set log2console: false
-  * if just need some of them ,set the type true. for example just output debug:   log2console: {debug: true}
+  * Do output to console ?  Boolean or Object    
+  * Default: true
+  * if show all set 'log2console: true',  otherwise, set 'log2console: false'
+  * if just need some of them ,set the type true. 
+  * for example just output debug:   
+  *     log2console: {debug: true}
   */
   "log2console": true; 
 
   /*
-  * Do output timestamp ? Boolean or String.  default: "YYYY-MM-DD HH:mm:ss"
-  *if show this, set date foramt string. for example: "YYYYMMDD".  the format rule please see http://momentjs.com/docs
-  *otherwish, set timestamp: false
+  * Do output timestamp ? Boolean or String.  
+  * Default: "YYYY-MM-DD HH:mm:ss"
+  * if show this, set date foramt string. for example: "YYYYMMDD".  
+  * the format rule please see http://momentjs.com/docs
+  * otherwish, set timestamp: false
   */
   "timestamp": "YYYY-MM-DD HH:mm:ss",
 
   /*
-  * Do output log level ?   Boolean    default: true
-  * if true, will output "[DEBUG]" or "[INFO]" or "[ERROR]" or "[WARN]" in console for log
+  * Do output log level ?   Boolean    
+  * Default: true
+  * if true, will output "[DEBUG]|[INFO]|[ERROR]|[WARN]" in console for log
   * if don't need this , set it be false
   */
   "levelShow": true,
 
   /*
-  * Do output the file name and line number ?  Boolean or Object.  default: {error: true, debug: true}
+  * Do output the file name and line number ?  Boolean or Object. 
+  * Default: {error: true, debug: true}
   * if output all type, set "lineInfo": true . otherwise set  set "lineInfo": false
-  * if just output for some log level,  set the level be true. e.g :   lineInfo:{"error": true, "debug": true}
+  * if just output for some log level,  set the level be true. 
+  * e.g :   lineInfo:{"error": true, "debug": true}
   *
   * Note !!!!!
   *    Output the file name and line number  will consume a lot of system resourse . 
   * Suggestion:
   *    In the develop enviroment , you can set it as you want. 
-  *     In the product enviroment, set lineInfo just for error level log.  for example: lineInfo: {"error": true}
+  *    In the product enviroment, set lineInfo just for error level log.  
+  *       for example: lineInfo: {"error": true}
   */
   "lineInfo": {
     "error": true,
-    "debug": true, //由于一般生产环境不会记录debug类型到文件或者控制，所以这里可以设置为true
+    "debug": true,
   }, 
 
   /*
-  *Do output to file ?   Boolean or Object.  default:  false
-  *the rule like  log2cosole
+  * Do output to file ?   Boolean or Object.  
+  * Default:  false
+  * the rule like  log2cosole
   */
   "log2file":{
       "debug": false,
@@ -98,37 +108,46 @@ In the default, read the configure ```appRoot/log4slow.json```, if it isn't exis
    },
 
    /*
-   *set the directory for log file.   directory path (absolute path) or  Boolean.    default: false
+   * set the directory for log file.   directory path (absolute path) or  Boolean.   
+   * Default: false
    * if false  the log file will be save in app root. 
    * or the path  like  "C:\\logs\\"    "/home/username/logs/"
    */
    "dirRoot": false,
 
    /*
-   * Where is log file ?   Array  or Bealean .  it's effective only the log2file be allow
+   * Where is log file ?   Array  or Bealean .  
+   * Default: false.
+   * Note:  it's effective only the log2file be allow
+   *
    * log file be save to [app-root|absolute path]/logs  if dirs is false
-   * dirs access a Array,  for example like this: ['a'， 'd' ] 
-   * so the file will be save to    [app-root|absolute path]/a/d   if the 'dirRoot' is false
+   * dirs access a Array,  for example like this: ['a'， 'd' ], 
+   * so the file will be save to  [app-root|absolute path]/a/d
+   *
    * it will be format to time if  begin with '$'.
    *    the format rule please the http://momentjs.com/docs
+   *
    * it will be format log type if begin with ':'
-   * the following option will be format :  [app-root|absolute path]/logs/2014/07/[error|warn|debug|info]
+   * the following option will be format :  
+   *    [app-root|absolute path]/logs/2014/07/[error|warn|debug|info]
    */
    "dirs": ["logs", "$YYYY", "$MM", "：type"], 
 
    /*
-   * what is name the file ?  String   default: $YYYMMDD
+   * what is name the file ?  String   
+   * Default: $YYYMMDD
    * it will be format to time if begin with '$'
    * the following option will be format 20140725
    */
-   "filename":"$YYYYMMDD",  //默认值 $YYYMMDD
+   "filename":"$YYYYMMDD",
 
    /*
-   * Do separately save log file accord log type ?  Boolean or Object . default: false
+   * Do separately save log file accord log type ?  Boolean or Object .
+   * Default: false
    * if error is true:
    *    the log file will be   [app-root|absolute path]/[dirs]/error
    */
-   "levelfile": { //默认值为false
+   "levelfile": {
       "error": true,
       "info": true,
       "warn": true,
@@ -136,9 +155,6 @@ In the default, read the configure ```appRoot/log4slow.json```, if it isn't exis
    }
 }
 ```
-
-
-
 
 ## API
 
