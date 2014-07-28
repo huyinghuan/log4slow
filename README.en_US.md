@@ -96,18 +96,30 @@ In the default, read the configure ```appRoot/log4slow.json```, if it isn't exis
    */
    "dirRoot": false,
 
-   //日志存放的文件夹.可以为数组，或者字符串。 如果不设置或者为false，则默认存放在应用logs目录下 或者 dirRoot目录下
-   //如果字符串以 $ 符号开头，则表示将其进行日期格式化。格式化规则 请参考 http://momentjs.com/docs
-   //如果前面带 : 则表示消息类型。
-   //比如error类型的日志的保存到文件夹类似（由于上面dirRoot为false因此在应用根目录下）：
-   // 应用根目录/logs/2014/07/error
-   "dirs": ["logs", "$YYYY", "$MM", "：type"], //默认为false 即 保存到logs文件夹下面。 需要log2flie进行了相关设置才生效
+   /*
+   * Where is log file ?   Array  or Bealean .  it's effective only the log2file be allow
+   * log file be save to [app-root|absolute path]/logs  if dirs is false
+   * dirs access a Array,  for example like this: ['a'， 'd' ] 
+   * so the file will be save to    [app-root|absolute path]/a/d   if the 'dirRoot' is false
+   * it will be format to time if  begin with '$'.
+   *    the format rule please the http://momentjs.com/docs
+   * it will be format log type if begin with ':'
+   * the following option will be format :  [app-root|absolute path]/logs/2014/07/[error|warn|debug|info]
+   */
+   "dirs": ["logs", "$YYYY", "$MM", "：type"], 
 
-   //日志的文件名。如果前面有$符号则格式化为日期 0712.log
+   /*
+   * what is name the file ?  String   default: $YYYMMDD
+   * it will be format to time if begin with '$'
+   * the following option will be format 20140725
+   */
    "filename":"$YYYYMMDD",  //默认值 $YYYMMDD
 
-   //是否根据消息类型分文件显示. 把需要单独显示的类别设置为true即可。若不需要分开显示则设置levelfile为false
-   //分开显示时,文件名为格式化后的名字加"-type" 这个功能和文件夹生成的规则(:)有点重复 建议同时只使用一个
+   /*
+   * Do separately save log file accord log type ?  Boolean or Object . default: false
+   * if error is true:
+   *    the log file will be   [app-root|absolute path]/[dirs]/error
+   */
    "levelfile": { //默认值为false
       "error": true,
       "info": true,
