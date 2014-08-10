@@ -20,6 +20,6 @@
   "dirRoot": false,
   "dirs": ["logs", "$YYYY", "$MM", ":type"],
   "default_dir": "logs",
-  "filename":"$MMDD",
+  "filename": "$MMDD",
   "levelfile": false
 }
