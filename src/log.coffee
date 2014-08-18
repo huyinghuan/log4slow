@@ -32,10 +32,20 @@ getFileAndLine = ()->
   return ''
 
 #根据不同数据类型 string, json object, error 获取格式良好的显示的信息
-getContentFromDataType = (content)->
-  return content.stack if content instanceof Error
-  return JSON.stringify content if content instanceof Object or content instanceof Array
-  return "#{content}"
+getContentFromDataType = (contents)->
+  result = []
+  for content, index in contents
+    if(content instanceof Error)
+      result.push content.stack
+      continue
+
+    if content instanceof Object or content instanceof Array
+      result.push JSON.stringify content
+      continue
+
+    result.push "#{content}"
+
+  result.join ', '
 
 #合成日志内容
 format = (content, type)->
@@ -59,7 +69,7 @@ output2file = (content, type)->
 factory = (type)->
   (content)->
     return if not content
-    content = format(content, type)
+    content = format(arguments, type)
     output2Console(content, type)
     output2file(content, type)
 
