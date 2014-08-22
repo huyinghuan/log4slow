@@ -2,7 +2,7 @@ log4slow
 ========
 logger information to file
 
-[![NPM](https://nodei.co/npm/log4slow.png)](https://nodei.co/npm/log4slow/)
+[![NPM](https://nodei.co/npm/log4slow.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/log4slow/)
 
 ##API
 1. Chinese: https://github.com/huyinghuan/log4slow/blob/master/README.zh_cn.md
