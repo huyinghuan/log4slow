@@ -16,6 +16,7 @@ logger information to file
 
 ## Using
 
+
 ```javascript
   Log = require("log4slow")
   
@@ -23,6 +24,9 @@ logger information to file
   Log.warn("hello, this is warning")
   Log.error("hello, this is error")
   Log.debug("hello, this is debug")
+  
+  // Log[type](arg1, arg2, ...)
+  Log.info({a: 1}, [1, 23, 4], 'test')
   
   //and can accept  Object or Error
   Log.info({a: 1, b: 2})
