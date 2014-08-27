@@ -2,7 +2,7 @@
 (function() {
   var Log, test;
 
-  Log = require("log4slow");
+  Log = require("../lib/log");
 
   test = function() {
     Log.info('hello');

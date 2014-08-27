@@ -176,6 +176,11 @@ Accept JSON Object as configure. will replace default configure's property
 Log.init(configObject)
 ```
 
+## History
+
+v0.0.9
+1. update project struct
+2. fixed a bug about issue #1
 
 
 

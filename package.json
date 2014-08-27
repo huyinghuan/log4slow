@@ -1,6 +1,6 @@
 {
   "name": "log4slow",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "log to file or console, support .log or .html",
   "keywords": [
     "log",
@@ -30,7 +30,7 @@
     "prepublish": "coffee -o . -c src/",
     "prestart": "coffee -o . -c src/",
     "pretest": "coffee -o . -c src/",
-    "test": "node example/test.js"
+    "test": "node test/test.js"
   },
   "main": "lib/log.js",
   "devDependencies": {
