@@ -2,6 +2,8 @@ log4slow
 ========
 logger information to file
 
+[![NPM](https://nodei.co/npm/log4slow.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/log4slow/)
+
 ##API
 1. Chinese: https://github.com/huyinghuan/log4slow/blob/master/README.zh_cn.md
 2. English: https://github.com/huyinghuan/log4slow/blob/master/README.en_US.md
@@ -14,6 +16,7 @@ logger information to file
 
 ## Using
 
+
 ```javascript
   Log = require("log4slow")
   
@@ -21,6 +24,9 @@ logger information to file
   Log.warn("hello, this is warning")
   Log.error("hello, this is error")
   Log.debug("hello, this is debug")
+  
+  // Log[type](arg1, arg2, ...)
+  Log.info({a: 1}, [1, 23, 4], 'test')
   
   //and can accept  Object or Error
   Log.info({a: 1, b: 2})

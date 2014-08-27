@@ -1,5 +1,5 @@
 _colors = require 'colors'
-_config = require './config.json'
+_config = require './configure'
 _moment = require 'moment'
 _fs = require 'fs'
 _path = require 'path'
@@ -32,10 +32,20 @@ getFileAndLine = ()->
   return ''
 
 #根据不同数据类型 string, json object, error 获取格式良好的显示的信息
-getContentFromDataType = (content)->
-  return content.stack if content instanceof Error
-  return JSON.stringify content if content instanceof Object or content instanceof Array
-  return "#{content}"
+getContentFromDataType = (contents)->
+  result = []
+  for content, index in contents
+    if(content instanceof Error)
+      result.push content.stack
+      continue
+
+    if content instanceof Object or content instanceof Array
+      result.push JSON.stringify content
+      continue
+
+    result.push "#{content}"
+
+  result.join ', '
 
 #合成日志内容
 format = (content, type)->
@@ -59,7 +69,7 @@ output2file = (content, type)->
 factory = (type)->
   (content)->
     return if not content
-    content = format(content, type)
+    content = format(arguments, type)
     output2Console(content, type)
     output2file(content, type)
 
@@ -71,10 +81,14 @@ extend = (src, dist)->
 
 class Log
   constructor: ()->
+    #获取自定义配置文件
     default_config = _path.join process.cwd(), 'log4slow.json'
+    #如果自定义文件存在则覆盖默认配置设置
     if _fs.existsSync(default_config) and _fs.statSync(default_config).isFile()
       _config = extend _config, require default_config
-      logfile.init _config
+    #初始化 日志文件输出设置
+    logfile.init _config
+
   init: (options)->
     _config = extend(_config, options)
     logfile.init _config

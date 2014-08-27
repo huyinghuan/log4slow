@@ -1,33 +1,39 @@
 {
-    "name": "log4slow",
-    "version": "0.0.8",
-    "description": "log to file or console, support .log or .html",
-    "keywords": ["log", "logger", "log2file"],
-    "author": "huyinghuan",
-    "homepage": "https://github.com/huyinghuan/log4slow",
-    "bugs": {
-        "url": "https://github.com/huyinghuan/log4slow/issues",
-        "email": "ec.huyinghuan@gmail.com"
-    },
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/huyinghuan/log4slow.git"
-    },
-    "engines": {
-        "node" : ">=0.10"
-    },
-    "dependencies": {
-        "coffee-script":"",
-        "colors": "",
-        "mkdirp": "",
-        "moment": ""
-    },
-    "scripts": {
-        "prepublish": "coffee -o lib/ -c src/",
-        "prestart": "coffee -o lib/ -c src/",
-        "pretest": "coffee -o lib/ -c src/",
-        "test": "node lib/test.js"
-    },
-    "main": "lib/log.js"
+  "name": "log4slow",
+  "version": "0.0.8",
+  "description": "log to file or console, support .log or .html",
+  "keywords": [
+    "log",
+    "logger",
+    "log2file"
+  ],
+  "author": "huyinghuan",
+  "homepage": "https://github.com/huyinghuan/log4slow",
+  "bugs": {
+    "url": "https://github.com/huyinghuan/log4slow/issues",
+    "email": "ec.huyinghuan@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/huyinghuan/log4slow.git"
+  },
+  "engines": {
+    "node": ">=0.10"
+  },
+  "dependencies": {
+    "colors": "",
+    "mkdirp": "",
+    "moment": ""
+  },
+  "scripts": {
+    "prepublish": "coffee -o . -c src/",
+    "prestart": "coffee -o . -c src/",
+    "pretest": "coffee -o . -c src/",
+    "test": "node example/test.js"
+  },
+  "main": "lib/log.js",
+  "devDependencies": {
+    "coffee-script": "^1.8.0"
+  }
 }
