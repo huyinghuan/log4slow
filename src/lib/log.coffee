@@ -27,8 +27,16 @@ getFileAndLine = ()->
   info = stack.split('\n')[4]
   cwd = process.cwd()
   return '' if not info
-  reg = new RegExp("#{cwd}([^:])+:(\\d)+", "g")
-  return fileInfo.replace cwd, '' if fileInfo = info.match(reg)[0]
+  #reg = new RegExp("#{cwd}([^:])+:(\\d)+", "g")
+  reg = new RegExp("\(.+\)", 'ig')
+  result = info.match(reg)
+  if result
+    fileInfo = result[0]
+    return fileInfo.replace cwd, ''
+  #如果该组建用在一个bin形式的node_moudle中时，显示完整路径
+  reg = new RegExp("\(.+\)")
+  result = info.match(reg)
+  return result[0] if result
   return ''
 
 #根据不同数据类型 string, json object, error 获取格式良好的显示的信息
