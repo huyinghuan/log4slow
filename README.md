@@ -177,6 +177,8 @@ Log.init(configObject)
 ```
 
 ## History
+v0.1.0
+1. fixed a bug that throws error  when log4slow use in bin node_module
 
 v0.0.9
 1. update project struct
