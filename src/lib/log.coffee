@@ -88,10 +88,13 @@ extend = (src, dist)->
 class Log
   constructor: ()->
     #获取自定义配置文件
-    default_config = _path.join process.cwd(), 'log4slow.json'
+    default_config = _path.join process.cwd(), 'log4slow'
+    default_config_path = ''
+    #如果json文件不存在则尝试使用require('path/to/log4slow')
+    default_config_path = "#{default_config}.json" if _fs.existsSync("#{default_config}.json")
+    default_config_path = "#{default_config}.js" if _fs.existsSync "#{default_config}.js"
     #如果自定义文件存在则覆盖默认配置设置
-    if _fs.existsSync(default_config) and _fs.statSync(default_config).isFile()
-      _config = extend _config, require default_config
+    _config = extend _config, require default_config_path if _fs.statSync(default_config_path).isFile()
     #初始化 日志文件输出设置
     logfile.init _config
 
